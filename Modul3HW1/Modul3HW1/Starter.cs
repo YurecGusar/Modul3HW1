@@ -38,6 +38,8 @@ namespace Modul3HW1
             myList.AddRange(myArr);
             myList.AddRange(defList);
             myList.Remove(5);
+            myList.Remove(2);
+            myList.Remove(3);
             myList.RemoveEmptiness();
             myList.Sort(new Comparer());
             return myList;

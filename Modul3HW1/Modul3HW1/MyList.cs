@@ -18,7 +18,7 @@ namespace Modul3HW1
             _array = new T[_defaultCapacity];
         }
 
-        public int Count => _counter + 1;
+        public int Count => _counter;
 
         public void Add(T value)
         {
@@ -66,11 +66,12 @@ namespace Modul3HW1
         public void RemoveEmptiness()
         {
             var newList = new T[Count];
+            var countForEmpty = 0;
             for (var i = 0; i < _array.Length; i++)
             {
                 if (!_array[i].Equals(default(T)))
                 {
-                    newList[_counter - i] = _array[i];
+                    newList[countForEmpty++] = _array[i];
                 }
             }
 
