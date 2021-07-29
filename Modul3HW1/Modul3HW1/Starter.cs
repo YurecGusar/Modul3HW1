@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace Modul3HW1
                 Console.WriteLine(item);
             }
 
+            Console.WriteLine();
             Console.WriteLine(myList.Count);
         }
 
@@ -29,13 +31,15 @@ namespace Modul3HW1
 
             for (var i = 0; i < defaultQuentity; i++)
             {
-                myList.Add(i + 9);
-                myArr[i] = i * 10;
+                myList.Add(i + 1);
+                myArr[i] = i + 10;
             }
 
             myList.AddRange(myArr);
             myList.AddRange(defList);
             myList.Remove(5);
+            myList.RemoveEmptiness();
+            myList.Sort(new Comparer());
             return myList;
         }
     }

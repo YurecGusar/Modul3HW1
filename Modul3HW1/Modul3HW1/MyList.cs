@@ -18,7 +18,7 @@ namespace Modul3HW1
             _array = new T[_defaultCapacity];
         }
 
-        public int Count => _counter;
+        public int Count => _counter + 1;
 
         public void Add(T value)
         {
@@ -38,21 +38,43 @@ namespace Modul3HW1
             }
         }
 
-        public void Remove(T item)
+        public bool Remove(T item)
         {
             for (var index = 0; index < _array.Length; index++)
             {
                 if (_array[index].Equals(item))
                 {
                     RemoveAt(index);
+                    return true;
                 }
             }
+
+            return false;
         }
 
         public void RemoveAt(int index)
         {
             _array[index] = default(T);
             _counter--;
+        }
+
+        public void Sort(IComparer<T> comparer)
+        {
+            Array.Sort(_array, comparer);
+        }
+
+        public void RemoveEmptiness()
+        {
+            var newList = new T[Count];
+            for (var i = 0; i < _array.Length; i++)
+            {
+                if (!_array[i].Equals(default(T)))
+                {
+                    newList[_counter - i] = _array[i];
+                }
+            }
+
+            _array = newList;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
